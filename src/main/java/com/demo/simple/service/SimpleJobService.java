@@ -43,4 +43,13 @@ public class SimpleJobService {
 	private void stepDone (String name) {
 		log.info ("Step #Done: {}", name);
 	}
+	
+    @Async
+    public void doSomeJob (String name) {
+        log.info ("Do some job : {}", name);
+        
+        stepOne (name);
+        stepDone (name);
+    }
+	
 }

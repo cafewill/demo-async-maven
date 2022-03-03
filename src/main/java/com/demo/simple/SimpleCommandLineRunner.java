@@ -14,7 +14,8 @@ public class SimpleCommandLineRunner implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 		for (int i = 1; i <= 20; i++) {
-			simpleJobService.doJob (String.format ("#%02d", i));
+            simpleJobService.doJob (String.format ("#%02d", i));
+            simpleJobService.doSomeJob (String.format ("#%02d", i));
 		}
 	}
 
