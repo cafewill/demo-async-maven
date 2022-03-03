@@ -16,6 +16,7 @@ public class SimpleCommandLineRunner implements CommandLineRunner {
 		for (int i = 1; i <= 20; i++) {
             simpleJobService.doJob (String.format ("#%02d", i));
             simpleJobService.doSomeJob (String.format ("#%02d", i));
+            simpleJobService.doThreeJob (String.format ("#%02d", i));
 		}
 	}
 
