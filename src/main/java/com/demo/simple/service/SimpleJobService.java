@@ -52,4 +52,11 @@ public class SimpleJobService {
         stepDone (name);
     }
 	
+    @Async
+    public void doThreeJob (String name) {
+        log.info ("Do three job : {}", name);
+        
+        stepOne (name);
+        stepDone (name);
+    }
 }
