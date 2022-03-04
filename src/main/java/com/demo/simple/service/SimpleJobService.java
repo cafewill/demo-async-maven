@@ -67,4 +67,12 @@ public class SimpleJobService {
         stepOne (name);
         stepDone (name);
     }
+
+    @Async
+    public void doFiveJob (String name) {
+        log.info ("Do five job : {}", name);
+        
+        stepOne (name);
+        stepDone (name);
+    }
 }

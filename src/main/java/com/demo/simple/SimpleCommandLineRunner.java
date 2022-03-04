@@ -18,6 +18,7 @@ public class SimpleCommandLineRunner implements CommandLineRunner {
             simpleJobService.doSomeJob (String.format ("#%02d", i));
             simpleJobService.doThreeJob (String.format ("#%02d", i));
             simpleJobService.doFourJob (String.format ("#%02d", i));
+            simpleJobService.doFiveJob (String.format ("#%02d", i));
 		}
 	}
 
