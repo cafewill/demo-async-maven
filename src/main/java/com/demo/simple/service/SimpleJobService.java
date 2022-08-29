@@ -9,7 +9,7 @@ import java.util.Random;
 @Slf4j
 @Service
 public class SimpleJobService {
-	@Async
+	@Async ("asyncTask")
 	public void doJob (String name) {
 		log.info ("Do job : {}", name);
 		
@@ -18,7 +18,25 @@ public class SimpleJobService {
 		stepDone (name);
 	}
 	
-	private void stepOne (String name) {
+    public void doTest (String name) {
+        log.info ("Do Test : {}", name);
+        
+        stepOne (name);
+        stepTwo (name);
+        stepDone (name);
+    }
+
+    // 아래 처럼 리턴하는 경우 "Caused by: org.springframework.aop.AopInvocationException: Null return value from advice does not match primitive return type for: public int com.demo.simple.service.SimpleJobService.getRandom(java.lang.String)" 발생함 
+    @Async ("asyncTask")
+    public int getRandom (String name) {
+        log.info ("Do Random : {}", name);
+        
+        stepDone (name);
+        
+        return (new Random ()).nextInt (1200);
+    }
+
+    private void stepOne (String name) {
 		long elapsed = 3000L + (new Random ()).nextInt (1200);
 		log.info ("Step #1 : {} [{}]", name, elapsed);
 
@@ -44,7 +62,7 @@ public class SimpleJobService {
 		log.info ("Step #Done: {}", name);
 	}
 	
-    @Async
+    @Async ("asyncTask")
     public void doSomeJob (String name) {
         log.info ("Do some job : {}", name);
         
@@ -52,7 +70,7 @@ public class SimpleJobService {
         stepDone (name);
     }
 	
-    @Async
+    @Async ("asyncTask")
     public void doThreeJob (String name) {
         log.info ("Do three job : {}", name);
         
@@ -60,7 +78,7 @@ public class SimpleJobService {
         stepDone (name);
     }
 
-    @Async
+    @Async ("asyncTask")
     public void doFourJob (String name) {
         log.info ("Do four job : {}", name);
         
